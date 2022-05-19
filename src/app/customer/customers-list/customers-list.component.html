@@ -1,0 +1,23 @@
+<app-filter-textbox (naamKlant)="filteren($event)"></app-filter-textbox>
+
+<table class="table">
+    <thead>
+        <th scope="col">Name</th>
+        <th scope="col">City</th>
+        <th scope="col">Order Total</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of gefilterdeKlanten">
+            <td>{{customer.name}}</td>
+            <td>{{customer.stad}}</td>
+            <td>{{customer.orderTotaal | currency:euroteken}}</td>
+        </tr>
+        <tr *ngIf="gefilterdeKlanten.length > 0">
+            <td colspan="2"></td>
+            <td colspan="3">{{totaal | currency:euroteken}}</td>
+        </tr>
+        <tr *ngIf="gefilterdeKlanten.length == 0">
+            <td colspan="3">Geen klanten gevonden</td>
+        </tr>
+    </tbody>
+</table>
